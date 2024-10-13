@@ -3,7 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Dashboard;
 use App\Livewire\Enrollments;
+use App\Livewire\MonthlyFees;
 use App\Livewire\Students;
+use App\Livewire\Transactions;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +18,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     
     Route::get('/students', Students::class)->name('students');
     Route::get('/enrollments', Enrollments::class)->name('enrollments');
+    Route::get('monthlyfees', MonthlyFees::class)->name('monthlyfees');
+    Route::get('transactions', Transactions::class)->name('transactions');
 
 });
 

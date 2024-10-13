@@ -15,9 +15,9 @@
                     </div>
                     <x-ts-table :quantitys="[5, 10, 25, 50, 100]" paginate :rows="$this->enrollments()"
                         :headers="$this->headers()">
-                        {{-- @interact('column_birthday', $row)
-                            <p>{{ $row->birthday->format('d/m/Y') }}</p>
-                        @endinteract --}}
+                       @interact('column_created_at', $row)
+                            <p>{{ $row->created_at->format('d/m/Y H:i:s') }}</p>
+                       @endinteract
                     </x-ts-table>
                 </div>
             </div>

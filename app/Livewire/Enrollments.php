@@ -41,7 +41,7 @@ class Enrollments extends Component
             ['index' => 'student.name', 'label' => 'Nome do aluno'],
             ['index' => 'student.ref', 'label' => 'Referencia do aluno'],
             ['index' => 'degree', 'label' => 'Classe'],
-            ['index' => 'created_at', 'label' => 'Data de matricola'],
+            ['index' => 'created_at', 'label' => 'Data de matricula'],
         ];
     }
 
@@ -79,7 +79,8 @@ class Enrollments extends Component
             $student = Student::find($this->student);
 
             $student->enrollments()->create([
-                'degree' => $this->degree
+                'degree' => $this->degree,
+                'enrolled_at'=>now()->year
             ]);
         } catch (\Throwable $th) {
             // throw $th;

@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
 
         $student = Student::first();
         $student->enrollments()->create([
-            'degree'=>'4 classe'
+            'degree'=>'4 classe',
+            'enrolled_at'=>now()->year
         ]);
     }
 }

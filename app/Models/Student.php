@@ -12,8 +12,14 @@ class Student extends Model
     /** @use HasFactory<\Database\Factories\StudentFactory> */
     use HasFactory, HasUlids;
 
-    public $fillable = [
+    protected $fillable = 
+    [
         'name', 'ref', 'birthday'
+    ];
+
+    protected $with = 
+    [
+        'enrollments'
     ];
 
 
@@ -28,5 +34,14 @@ class Student extends Model
     public function enrollments(): HasMany
     {
         return $this->hasMany(Enrollment::class);
+    }
+
+    public function monthlyfees(): HasMany
+    {
+        return $this->hasMany(Monthlyfee::class);
+    }
+
+    public function scopehasEnroll(){
+        return $this->enrollments()->where('enrolled_at', now()->year);
     }
 }

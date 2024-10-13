@@ -13,8 +13,9 @@ class Enrollment extends Model
     use HasFactory, HasUlids;
 
     public $fillable = [
-        'student_id',
         'degree',
+        'student_id',
+        'enrolled_at',
     ];
 
     public function student(): BelongsTo
