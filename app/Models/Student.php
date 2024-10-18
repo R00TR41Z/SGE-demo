@@ -2,22 +2,23 @@
 
 namespace App\Models;
 
+use App\Enums\MonthfeeStatus;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Student extends Model
+class Student extends User
 {
     /** @use HasFactory<\Database\Factories\StudentFactory> */
     use HasFactory, HasUlids;
 
-    protected $fillable = 
+    protected $fillable =
     [
         'name', 'ref', 'birthday'
     ];
 
-    protected $with = 
+    protected $with =
     [
         'enrollments'
     ];
@@ -26,7 +27,8 @@ class Student extends Model
     public function casts(): array
     {
         return [
-            'birthday'=>'date'
+            'birthday' => 'date',
+            'password' => 'hashed'
         ];
     }
 
@@ -41,7 +43,18 @@ class Student extends Model
         return $this->hasMany(Monthlyfee::class);
     }
 
-    public function scopehasEnroll(){
+    public function paidMonthlyfee(): int
+    {
+        return $this->monthlyfees()->where('status', MonthfeeStatus::PAID->value)->count();
+    }
+
+    public function unPaidMonthlyfee(): int
+    {
+        return $this->monthlyfees()->where('status', MonthfeeStatus::UNPAID->value)->count();
+    }
+
+    public function hasEnroll()
+    {
         return $this->enrollments()->where('enrolled_at', now()->year);
     }
 }

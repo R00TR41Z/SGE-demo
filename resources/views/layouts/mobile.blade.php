@@ -14,7 +14,4 @@
         <x-responsive-nav-link :href="route('monthlyfees')" :active="request()->routeIs('monthlyfees')">
             {{ __('Mensalidades') }}
         </x-responsive-nav-link>
-        <x-responsive-nav-link :href="route('transactions')" :active="request()->routeIs('transactions')">
-            {{ __('Transações') }}
-        </x-responsive-nav-link>
 </div>

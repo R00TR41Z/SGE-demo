@@ -34,4 +34,9 @@ class Monthlyfee extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function isOwn(string $id)
+    {
+        return $this->student->id == $id;
+    }
 }

@@ -34,3 +34,11 @@ if (!function_exists('generateMonthlyfeeRef')) {
         return $ref;
     }
 }
+
+if (!function_exists('student')) {
+    function student(): Student
+    {
+        $student = Auth::guard('student')->user();
+        return $student;
+    }
+}

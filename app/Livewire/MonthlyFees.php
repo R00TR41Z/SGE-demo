@@ -2,18 +2,16 @@
 
 namespace App\Livewire;
 
-use App\Models\Enrollment;
-use App\Models\Monthlyfee;
-use App\Models\Student;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 use Illuminate\View\View;
-use Karson\MpesaPhpSdk\Mpesa;
-use Livewire\Attributes\Computed;
+use App\Models\Monthlyfee;
+use App\Models\Enrollment;
+use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
-use Livewire\WithPagination;
+use Livewire\Attributes\Computed;
 use TallStackUi\Traits\Interactions;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 #[Layout('layouts.app')]
 class MonthlyFees extends Component
@@ -62,13 +60,7 @@ class MonthlyFees extends Component
                 throw $th;
             }
         });
-        // $mpesaInstance = new Mpesa();
-        // $mpesaInstance->setPublicKey(config('mpesa.public_key'));
-        // $mpesaInstance->setApiKey(config('mpesa.api_key')); //test
-        // $mpesaInstance->setEnv(config('mpesa.env'));
-        // $mpesaInstance->setServiceProviderCode(config('mpesa.service_provider_code'));
-
-        // dd($mpesaInstance->c2b("EST93Q432123", "258847049818", 500, "PAY4SF871".rand(100,1000)), mb_scrub('ola'));
+       
     }
 
 
